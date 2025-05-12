@@ -1,18 +1,22 @@
-class Solution{
+class Solution {
     public int findMaxLength(int[] nums) {
-    Map<Integer, Integer> map = new HashMap<>();
-    map.put(0, -1); // count 0 seen at index -1
-    int maxLen = 0, count = 0;
-
-    for (int i = 0; i < nums.length; i++) {
-        count += nums[i] == 1 ? 1 : -1;
-        if (map.containsKey(count)) {
-            maxLen = Math.max(maxLen, i - map.get(count));
-        } else {
-            map.put(count, i);
+        int n=nums.length;
+        int sum=0;
+        int maxlen=0;
+        //int count=0;
+        HashMap<Integer,Integer>hm= new HashMap<>();
+        hm.put(0,-1);//value,index
+        for(int i=0;i<n;i++){
+            sum+= (nums[i]==1)?1:-1;
+            if(hm.containsKey(sum)){
+               maxlen=Math.max(maxlen, i-hm.get(sum)); // end -start
+            }
+            else{
+                hm.put(sum,i);
+            }
+           // max= Math.max(max,count);
         }
-    }
-
-    return maxLen;
+        return maxlen;
+        
     }
 }
