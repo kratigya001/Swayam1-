@@ -1,21 +1,22 @@
 class Solution {
-     long m= 1000000007;
+    long MOD = 1000000007;
+
     public int countGoodNumbers(long n) {
-        long even= helper(5, (n+1)/2);
-        long odd= helper(4,(n/2)) ;
-        long ans=( even* odd) %m;
-        return (int) ans;
-        
+        long evenIndex=(n+1)/2;
+        long oddIndex=n/2;
+        long even=findPow(5,evenIndex);
+        long odd=findPow(4,oddIndex);
+        long result=(even*odd)%MOD;
+        return (int)result;
     }
-    private long helper(long a,long b){
+    private long findPow(long a,long b){
         if(b==0) return 1;
+        long half=findPow(a,b/2);
+        long ans=(half*half)%MOD;
+        if(b%2==1){ //odd
 
-        long half= helper(a,b/2);
-        long result=( half* half) %m ;
-        if(b%2==1){
-            result= (result*a) %m ;
+          ans=(ans*a)%MOD;
         }
-         return result ;
-
+        return ans;
     }
 }
