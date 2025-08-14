@@ -15,7 +15,7 @@ class Solution {
 
         Arrays.sort(piles);
         int low=1;
-        int high=piles[n-1];
+        int high=piles[n-1]; //take value ...not index
         while(low<= high){
             int mid=(low+high )/2;
             int totalways=helper(piles,mid);
