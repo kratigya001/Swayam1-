@@ -1,24 +1,26 @@
 class Solution {
-    // Helper function to get sum of squares of digits
-    private int getNext(int n) {
-        int totalSum = 0;
-        while (n > 0) {
-            int d = n % 10;
-            n = n / 10;
-            totalSum += d * d;
-        }
-        return totalSum;
-    }
-
     public boolean isHappy(int n) {
-        int slow = n;
-        int fast = getNext(n);
+        HashSet<Integer>hs= new HashSet<>();
+        while(n!=1){
+            int sum=0;
+            int temp=n;
 
-        while (fast != 1 && slow != fast) {
-            slow = getNext(slow);
-            fast = getNext(getNext(fast));
+           // Sum of squares of digits
+            while(temp>0){
+               int d= temp%10;
+               temp=temp/10;
+               sum+= d*d;
+            }
+            if(hs.contains(sum)){
+                return false; // cycle detected
+            }
+            hs.add(sum);
+            n=sum;
+            
+
+
         }
-
-        return fast == 1;
+        return true;//reach 1 
+        
     }
 }
