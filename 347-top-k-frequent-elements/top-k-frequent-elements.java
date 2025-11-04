@@ -3,7 +3,7 @@ class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         HashMap<Integer,Integer> mpp = new HashMap<>();
         for(int i : nums) mpp.put(i,mpp.getOrDefault(i,0)+1);
-        PriorityQueue<Integer> pairs = new PriorityQueue<>((a,b)->Integer.compare(mpp.get(b),mpp.get(a)));
+        PriorityQueue<Integer> pairs = new PriorityQueue<>((a,b)->mpp.get(b)-mpp.get(a));
         for(int key : mpp.keySet()){
             pairs.add(key); 
         }
