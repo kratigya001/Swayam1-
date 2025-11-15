@@ -1,23 +1,13 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer>hm = new HashMap<>();
         int n=nums.length;
-        int ans[]= new int [2];
         for(int i=0;i<n;i++){
-            int need=target- nums[i];
-            if(hm.containsKey(need)){
-                ans[0]=i;
-                ans[1]=hm.get(need);
-
+            for(int j=i+1;j<n;j++){
+                if(nums[i]+nums[j]==target){
+                    return new int [] {i,j};
+                }
             }
-            else{
-                hm.put(nums[i],i);
-            }
-
-
         }
-        return ans;
-
-        
+        return new int []{-1,-1}; //never execute
     }
 }
