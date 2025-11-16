@@ -4,9 +4,9 @@ class Solution {
         while(n!= 1){
             int temp=n;
             int sum=0;
-            while(temp>= 1){
+            while(temp>0){
                 int d=temp % 10;
-                temp=temp/10; //repeat jabatak temp>1
+                temp=temp/10; //repeat jabatak temp > 0
                 sum+= d*d;
             }
             if (hs.contains(sum)){
