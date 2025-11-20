@@ -1,13 +1,17 @@
 class Solution {
     public int missingNumber(int[] nums) {
-        int xor=0;
+        Arrays.sort(nums);
         int n=nums.length;
-        for(int i=0;i<=n;i++){
-            xor=xor^i;
-        }
         for(int i=0;i<n;i++){
-            xor=xor^ nums[i];
+            if(nums[i]==i) {
+                 continue;
+            }
+            else{
+                return i;
+
+            }
+
         }
-        return xor;
+        return n;
     }
 }
