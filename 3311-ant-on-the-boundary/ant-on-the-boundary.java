@@ -1,13 +1,15 @@
 class Solution {
     public int returnToBoundaryCount(int[] nums) {
-        int counter = 0;
-        int res = 0;
-        for (int n=0;n<nums.length;n++) {
-            counter += nums[n]; 
-            if (counter == 0) {
-                res++;
+        int count=0;
+        int sum=0;
+        for(int x : nums){
+            sum+= x;
+            if(sum== 0){
+                count++;
             }
         }
-        return res;
+        return count;
+
+        
     }
 }
